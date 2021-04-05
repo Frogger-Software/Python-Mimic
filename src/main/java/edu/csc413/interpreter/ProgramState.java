@@ -16,6 +16,9 @@ public class ProgramState {
     private HashMap<String, List<String>> functionParameterMap;
     private HashMap<String, List<Statement>> functionStatementMap;
 
+    private boolean hasReturnValue;
+    private int returnValue;
+
     public ProgramState() {
         callStack = new Stack<>();
         addCallFrame();
@@ -79,22 +82,27 @@ public class ProgramState {
     /** Returns whether or not a return value has been recorded. */
     public boolean hasReturnValue() {
         // TODO: Implement.
-        return false;
+        return hasReturnValue;
     }
 
     /** Returns the recorded return value, if it exists. */
     public int getReturnValue() {
         // TODO: Implement.
-        return 0;
+        return returnValue;
     }
 
     /** Records a return value. hasReturnValue should return true after this method is called. */
     public void setReturnValue(int returnValue) {
         // TODO: Implement.
+        this.returnValue = returnValue;
+        hasReturnValue = true;
     }
 
     /** Clears the recorded return value. hasReturnValue should return false after this method is called. */
     public void clearReturnValue() {
         // TODO: Implement.
+        this.returnValue = 0;
+        this.hasReturnValue = false;
+
     }
 }

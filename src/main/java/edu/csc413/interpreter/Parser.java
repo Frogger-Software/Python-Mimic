@@ -77,7 +77,7 @@ public class Parser {
             String rangeStartAsString,
             String rangeEndAsString,
             List<Statement> bodyStatements) {
-        // TODO: Implement.
+        // TODO: Implement. done
         return new ForStatement(
                 loopVariableName,
                 parseExpression(rangeStartAsString),
@@ -87,18 +87,22 @@ public class Parser {
 
     public Statement createDefineFunctionStatement(
             String functionName, List<String> parameterNames, List<Statement> functionStatements) {
-        // TODO: Implement.
+        // TODO: Implement. done
         return new DefineFunctionStatement(functionName, parameterNames, functionStatements);
     }
 
     public Statement createReturnStatement(String expressionAsString) {
         // TODO: Implement.
-        return null;
+        return new ReturnStatement(parseExpression(expressionAsString));
     }
 
     public Expression createFunctionCallExpression(String functionName, List<String> parameterValuesAsStrings) {
         // TODO: Implement.
-        return null;
+        List<Expression> parameterValues = new LinkedList<>();
+        for(String str: parameterValuesAsStrings){
+            parameterValues.add(parseExpression(str));
+        }
+        return new FunctionCallExpression(functionName, parameterValues);
     }
 
     /** Converts a String representing an expression into an Expression object, based on the pattern detected. */

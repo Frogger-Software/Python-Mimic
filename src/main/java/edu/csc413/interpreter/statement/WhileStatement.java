@@ -16,6 +16,9 @@ public class WhileStatement extends BlockStatement {
         while (getCondition().evaluate(programState)) {
             for (Statement statement: getStatements()) {
                 statement.run(programState);
+                if(statement instanceof ReturnStatement){
+                    break;
+                }
             }
         }
     }
