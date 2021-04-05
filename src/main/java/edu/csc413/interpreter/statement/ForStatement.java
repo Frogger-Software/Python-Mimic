@@ -14,7 +14,7 @@ public class ForStatement extends BlockStatement {
             String loopVariableName,
             Expression rangeStart,
             Expression rangeEnd,
-            List<Statement> bodyStatements){
+            List<Statement> bodyStatements) {
         super(null, bodyStatements);
         this.loopVariable = loopVariableName;
         this.rangeStart = rangeStart;
@@ -27,10 +27,10 @@ public class ForStatement extends BlockStatement {
         int end = rangeEnd.evaluate(programState);
 
         programState.setVariable(loopVariable, rangeStart.evaluate(programState));// i = 0
-        while (programState.getVariable(loopVariable) < end){//i < n
-            for(Statement statement: getStatements()){
+        while (programState.getVariable(loopVariable) < end) {//i < n
+            for (Statement statement : getStatements()) {
                 statement.run(programState);
-                if(programState.hasReturnValue()){
+                if (programState.hasReturnValue()) {
                     return;
                 }
             }

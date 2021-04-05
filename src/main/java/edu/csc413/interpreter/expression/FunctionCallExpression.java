@@ -19,7 +19,7 @@ public class FunctionCallExpression implements Expression {
     public int evaluate(ProgramState programState) {
         List<Integer> valuesList = new LinkedList<>();
         for(int i = 0; i < parameterValues.size(); i++){
-            valuesList.add(parameterValues.get(i).evaluate(programState));
+            valuesList.add(parameterValues.get(i).evaluate(programState));//save values before we use new call frame
         }
         programState.addCallFrame();
         int i = 0;

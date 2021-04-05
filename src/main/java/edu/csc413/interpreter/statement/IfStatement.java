@@ -2,6 +2,7 @@ package edu.csc413.interpreter.statement;
 
 import edu.csc413.interpreter.ProgramState;
 import edu.csc413.interpreter.expression.Condition;
+
 import java.util.List;
 
 /**
@@ -18,9 +19,9 @@ public class IfStatement extends BlockStatement {
     @Override
     public void run(ProgramState programState) {
         if (getCondition().evaluate(programState)) {
-            for (Statement statement: getStatements()) {
+            for (Statement statement : getStatements()) {
                 statement.run(programState);
-                if(programState.hasReturnValue()){
+                if (programState.hasReturnValue()) {
                     return;
                 }
             }

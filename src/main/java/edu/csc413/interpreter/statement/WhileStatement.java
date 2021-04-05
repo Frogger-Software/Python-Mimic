@@ -14,9 +14,9 @@ public class WhileStatement extends BlockStatement {
     @Override
     public void run(ProgramState programState) {
         while (getCondition().evaluate(programState)) {
-            for (Statement statement: getStatements()) {
+            for (Statement statement : getStatements()) {
                 statement.run(programState);
-                if(programState.hasReturnValue()){
+                if (programState.hasReturnValue()) {
                     return;
                 }
             }

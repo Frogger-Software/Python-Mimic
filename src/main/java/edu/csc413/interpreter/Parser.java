@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 /**
  * The Parser class is used to convert information that Interpreter pulls from the program lines into actual Statement,
  * Expression, and Condition objects. You will need to implement all of the methods marked by TODO.
- *
+ * <p>
  * You will find it useful to call parseExpression and parseCondition in your implementation. Both of these are already
  * complete and don't need to be modified, though they do rely on your createConstantExpression, etc. methods being
  * implemented.
@@ -99,13 +99,15 @@ public class Parser {
     public Expression createFunctionCallExpression(String functionName, List<String> parameterValuesAsStrings) {
         // TODO: Implement.
         List<Expression> parameterValues = new LinkedList<>();
-        for(String str: parameterValuesAsStrings){
+        for (String str : parameterValuesAsStrings) {
             parameterValues.add(parseExpression(str));
         }
         return new FunctionCallExpression(functionName, parameterValues);
     }
 
-    /** Converts a String representing an expression into an Expression object, based on the pattern detected. */
+    /**
+     * Converts a String representing an expression into an Expression object, based on the pattern detected.
+     */
     private Expression parseExpression(String expressionAsString) {
         if (expressionAsString.matches(CONSTANT_PATTERN.pattern())) {
             return createConstantExpression(Integer.parseInt(expressionAsString));
@@ -144,9 +146,11 @@ public class Parser {
         throw new RuntimeException("Unrecognized expression: " + expressionAsString);
     }
 
-    /** Converts a String representing a boolean condition into a Condition object, based on the pattern detected. */
+    /**
+     * Converts a String representing a boolean condition into a Condition object, based on the pattern detected.
+     */
     private Condition parseCondition(String conditionAsString) {
-        for (String operator: CONDITION_OPERATORS) {
+        for (String operator : CONDITION_OPERATORS) {
             Matcher matcher = Pattern.compile(String.format("^(.+)%s(.+)$", operator)).matcher(conditionAsString);
             if (matcher.matches()) {
                 return createCondition(operator, matcher.group(1).trim(), matcher.group(2).trim());

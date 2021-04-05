@@ -16,11 +16,11 @@ public abstract class BlockStatement implements Statement {
 
     public abstract void run(ProgramState programState);
 
-    protected Condition getCondition(){
+    protected Condition getCondition() {
         return condition;
     }
 
-    protected List<Statement> getStatements(){
+    protected List<Statement> getStatements() {
         return body;
     }
 }

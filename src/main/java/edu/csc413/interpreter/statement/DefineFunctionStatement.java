@@ -4,7 +4,7 @@ import edu.csc413.interpreter.ProgramState;
 
 import java.util.List;
 
-public class DefineFunctionStatement implements Statement{
+public class DefineFunctionStatement implements Statement {
     private String functionName;
     private List<String> parameterNames;
     private List<Statement> functionStatements;
