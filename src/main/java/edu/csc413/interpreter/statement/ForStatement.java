@@ -5,27 +5,30 @@ import edu.csc413.interpreter.expression.Expression;
 
 import java.util.List;
 
-public class ForStatement implements Statement {
+public class ForStatement extends BlockStatement {
     private String loopVariable;
-    Expression rangeStart;
-    Expression rangeEnd;
-    private List<Statement> bodyStatements;
+    private Expression rangeStart;
+    private Expression rangeEnd;
 
     public ForStatement(
             String loopVariableName,
             Expression rangeStart,
             Expression rangeEnd,
             List<Statement> bodyStatements){
+        super(null, bodyStatements);
         this.loopVariable = loopVariableName;
         this.rangeStart = rangeStart;
         this.rangeEnd = rangeEnd;
-        this.bodyStatements = bodyStatements;
     }
+
     @Override
     public void run(ProgramState programState) {
+        //int start = rangeStart.evaluate(programState);//waste of memory?
+        int end = rangeEnd.evaluate(programState);
+
         programState.setVariable(loopVariable, rangeStart.evaluate(programState));// i = 0
-        while (programState.getVariable(loopVariable) < rangeEnd.evaluate(programState)){//i < n
-            for(Statement statement: bodyStatements){
+        while (programState.getVariable(loopVariable) < end){//i < n
+            for(Statement statement: getStatements()){
                 statement.run(programState);
             }
             programState.setVariable(loopVariable, programState.getVariable(loopVariable) + 1);//i++
