@@ -9,19 +9,16 @@ import java.util.List;
  * condition evaluates to true.
  */
 // TODO: Implement. IfStatement and WhileStatement share a lot in common; find a way to avoid code duplication.
-public class IfStatement implements Statement {
-    private Condition condition;
-    private List<Statement> body;
+public class IfStatement extends BlockStatement {
 
     public IfStatement(Condition condition, List<Statement> body) {
-        this.condition = condition;
-        this.body = body;
+        super(condition, body);
     }
 
     @Override
     public void run(ProgramState programState) {
-        if (condition.evaluate(programState)) {
-            for (Statement statement: body) {
+        if (getCondition().evaluate(programState)) {
+            for (Statement statement: getStatements()) {
                 statement.run(programState);
             }
         }

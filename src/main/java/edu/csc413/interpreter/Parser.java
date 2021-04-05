@@ -62,7 +62,7 @@ public class Parser {
 
     public Statement createWhileStatement(String conditionAsString, List<Statement> bodyStatements) {
         // TODO: Implement.
-        return null;
+        return new WhileStatement(parseCondition(conditionAsString), bodyStatements);
     }
 
     public Statement createForStatement(
