@@ -27,10 +27,11 @@ public class FunctionCallExpression implements Expression {
             if (programState.hasReturnValue()) {
                 int returnValue = programState.getReturnValue();
                 programState.clearReturnValue();
+//                programState.removeCallFrame();
                 return returnValue;
             }
         }
 //        programState.removeCallFrame();
-        return 0;
+        return -1;
     }
 }

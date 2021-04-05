@@ -20,8 +20,8 @@ public class IfStatement extends BlockStatement {
         if (getCondition().evaluate(programState)) {
             for (Statement statement: getStatements()) {
                 statement.run(programState);
-                if(statement instanceof ReturnStatement){
-                    break;
+                if(programState.hasReturnValue()){
+                    return;
                 }
             }
         }

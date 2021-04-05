@@ -101,7 +101,7 @@ public class ProgramState {
     /** Clears the recorded return value. hasReturnValue should return false after this method is called. */
     public void clearReturnValue() {
         // TODO: Implement.
-        this.returnValue = 0;
+        this.returnValue = -1;
         this.hasReturnValue = false;
 
     }
