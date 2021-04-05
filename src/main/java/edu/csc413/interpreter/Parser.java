@@ -1,6 +1,13 @@
 package edu.csc413.interpreter;
 
 import edu.csc413.interpreter.expression.*;
+import edu.csc413.interpreter.expression.arithmetic.AddExpression;
+import edu.csc413.interpreter.expression.arithmetic.DivideExpression;
+import edu.csc413.interpreter.expression.arithmetic.MultiplyExpression;
+import edu.csc413.interpreter.expression.arithmetic.SubtractExpression;
+import edu.csc413.interpreter.expression.condition.EqualsCondition;
+import edu.csc413.interpreter.expression.condition.GreaterThanCondition;
+import edu.csc413.interpreter.expression.condition.LessThanCondition;
 import edu.csc413.interpreter.statement.*;
 
 import java.util.*;
@@ -61,7 +68,7 @@ public class Parser {
     }
 
     public Statement createWhileStatement(String conditionAsString, List<Statement> bodyStatements) {
-        // TODO: Implement.
+        // TODO: Implement. done
         return new WhileStatement(parseCondition(conditionAsString), bodyStatements);
     }
 
@@ -71,7 +78,11 @@ public class Parser {
             String rangeEndAsString,
             List<Statement> bodyStatements) {
         // TODO: Implement.
-        return null;
+        return new ForStatement(
+                loopVariableName,
+                parseExpression(rangeStartAsString),
+                parseExpression(rangeEndAsString),
+                bodyStatements);
     }
 
     public Statement createDefineFunctionStatement(

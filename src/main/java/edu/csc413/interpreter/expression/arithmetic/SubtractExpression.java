@@ -1,6 +1,8 @@
-package edu.csc413.interpreter.expression;
+package edu.csc413.interpreter.expression.arithmetic;
 
 import edu.csc413.interpreter.ProgramState;
+import edu.csc413.interpreter.expression.ArithmeticExpression;
+import edu.csc413.interpreter.expression.Expression;
 
 public class SubtractExpression extends ArithmeticExpression {
     public SubtractExpression(Expression lhs, Expression rhs) {

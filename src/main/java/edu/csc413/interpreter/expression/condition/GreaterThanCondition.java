@@ -1,6 +1,8 @@
-package edu.csc413.interpreter.expression;
+package edu.csc413.interpreter.expression.condition;
 
 import edu.csc413.interpreter.ProgramState;
+import edu.csc413.interpreter.expression.Condition;
+import edu.csc413.interpreter.expression.Expression;
 
 public class GreaterThanCondition extends Condition {
     public GreaterThanCondition(Expression lhs, Expression rhs) {
