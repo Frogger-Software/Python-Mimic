@@ -13,11 +13,16 @@ public class ProgramState {
 
     // TODO: Implement. Add any other instance variables you need.
 
+    private HashMap<String, List<String>> functionParameterMap;
+    private HashMap<String, List<Statement>> functionStatementMap;
+
     public ProgramState() {
         callStack = new Stack<>();
         addCallFrame();
 
         // TODO: Implement. Initialize any instance variables you added.
+        functionStatementMap = new HashMap<>();
+        functionParameterMap = new HashMap<>();
     }
 
     /** Returns the integer value associated with the specified variable name in the current call frame. */
@@ -55,18 +60,20 @@ public class ProgramState {
      */
     public void registerFunction(String functionName, List<String> parameterNames, List<Statement> functionStatements) {
         // TODO: Implement.
+        functionParameterMap.put(functionName, parameterNames);
+        functionStatementMap.put(functionName, functionStatements);
     }
 
     /** Returns the list of parameter names associated with the specified function name. */
     public List<String> getParameterNames(String functionName) {
         // TODO: Implement.
-        return null;
+        return functionParameterMap.get(functionName);
     }
 
     /** Returns the list of function statements associated with the specified function name. */
     public List<Statement> getFunctionStatements(String functionName) {
         // TODO: Implement.
-        return null;
+        return functionStatementMap.get(functionName);
     }
 
     /** Returns whether or not a return value has been recorded. */
