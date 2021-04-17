@@ -27,6 +27,8 @@ public class ProgramState {
         // TODO: Implement. Initialize any instance variables you added.
         functionStatementMap = new HashMap<>();
         functionParameterMap = new HashMap<>();
+
+        hasReturnValue = false;
     }
 
     /**
