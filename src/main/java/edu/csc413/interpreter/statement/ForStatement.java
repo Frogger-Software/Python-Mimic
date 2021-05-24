@@ -28,12 +28,7 @@ public class ForStatement extends BlockStatement {
 
         programState.setVariable(loopVariable, rangeStart.evaluate(programState));// i = 0
         while (programState.getVariable(loopVariable) < end) {//i < n
-            for (Statement statement : getStatements()) {
-                statement.run(programState);
-                if (programState.hasReturnValue()) {
-                    return;
-                }
-            }
+            runBlockStatements(programState);
             programState.setVariable(loopVariable, programState.getVariable(loopVariable) + 1);//i++
         }
     }

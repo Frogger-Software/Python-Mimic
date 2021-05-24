@@ -19,12 +19,7 @@ public class IfStatement extends BlockStatement {
     @Override
     public void run(ProgramState programState) {
         if (getCondition().evaluate(programState)) {
-            for (Statement statement : getStatements()) {
-                statement.run(programState);
-                if (programState.hasReturnValue()) {
-                    return;
-                }
-            }
+            runBlockStatements(programState);
         }
     }
 }

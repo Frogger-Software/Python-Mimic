@@ -14,13 +14,16 @@ public abstract class BlockStatement implements Statement {
         this.body = body;
     }
 
-    public abstract void run(ProgramState programState);
+    protected void runBlockStatements(ProgramState programState){
+        for (Statement statement : body) {
+            statement.run(programState);
+            if (programState.hasReturnValue()) {
+                return;
+            }
+        }
+    }
 
     protected Condition getCondition() {
         return condition;
-    }
-
-    protected List<Statement> getStatements() {
-        return body;
     }
 }
