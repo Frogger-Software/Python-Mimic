@@ -1,5 +1,1 @@
-# CSC 413 Assignment 3 README
-
-Name: Ze Lei
-
-Email: zlei1@mail.sfsu.edu
+Use the included program files to test
